@@ -7,10 +7,22 @@ namespace project32
         static void Main(string[] args)
         {
             baseArray[] arrays = new baseArray[3];
-            arrays[0] = new oneDimensionalArray(false, 5, 0);
-            arrays[1] = new twoDimensionalArray(false, 5, 10);
-            arrays[2] = new jagged(false, 10, 0);
+
+            Console.WriteLine("Ввести массивы не случайно? (Yes, No): ");
+            if(Console.ReadLine() == "Yes")
+            {
+                arrays[0] = new oneDimensionalArray(true);
+                arrays[1] = new twoDimensionalArray(true);
+                arrays[2] = new jagged(true);
+            }
             
+            else
+            {
+                arrays[0] = new oneDimensionalArray(false);
+                arrays[1] = new twoDimensionalArray(false);
+                arrays[2] = new jagged(false);
+            }
+
             for(int i = 0; i < arrays.Length; i++)
             {
                 arrays[i].printArray();

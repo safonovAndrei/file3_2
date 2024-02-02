@@ -6,24 +6,22 @@ namespace project32
     {
         private int[][] array;
 
-        public jagged(bool isNotRandom, int length, int width)
+        public jagged(bool isNotRandom): base(isNotRandom)
         {
             if (isNotRandom)
             {
-                array = new int[length][];
-                getJugged(array);
+                getFormUserArray();
             }
             else
             {
-                Random random = new Random();
-                int NumberOfArrays = random.Next(3, 10);
-                array = new int[NumberOfArrays][];
-                getRandomJagged(array);
+                getRandomArray();
             }
         }
 
-        private int[][] getJugged(int[][] array)
+        protected override void getFormUserArray()
         {
+            Console.WriteLine("Введите кол-во массивов в ступенчатом массиве: ");
+            array = new int[int.Parse(Console.ReadLine())][];
             for (int i = 0; i < array.Length; i++)
             {
                 Console.WriteLine($"Введите количество элементов для {i + 1} массива: ");
@@ -34,12 +32,13 @@ namespace project32
                     array[i][j] = int.Parse(Console.ReadLine());
                 }
             }
-            return array;
         }
 
-        private int[][] getRandomJagged(int[][] array)
+        protected override void getRandomArray()
         {
             Random random = new Random();
+            int numberOfArrays = random.Next(3, 10);
+            array = new int[numberOfArrays][];
             for (int i = 0; i < array.Length; i++)
             {
                 array[i] = new int[random.Next(3, 10)];
@@ -48,22 +47,17 @@ namespace project32
                     array[i][j] = random.Next(3, 10);
                 }
             }
-            return array;
         }
 
-        public override void fillArray(bool isNotRandom, int length, int width)
+        public override void fillArray(bool isNotRandom)
         {
             if (isNotRandom)
             {
-                array = new int[length][];
-                getJugged(array);
+                getFormUserArray();
             }
             else
             {
-                Random random = new Random();
-                int NumberOfArrays = random.Next(3, 10);
-                array = new int[NumberOfArrays][];
-                getRandomJagged(array);
+                getRandomArray();
             }
         }
 

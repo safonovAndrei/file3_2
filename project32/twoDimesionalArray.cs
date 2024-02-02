@@ -6,38 +6,41 @@ namespace project32
     {
         private int[,] array;
 
-        public twoDimensionalArray(bool isNotRandom, int length, int width)
+        public twoDimensionalArray(bool isNotRandom): base(isNotRandom)
         {
             if (isNotRandom)
             {
-                array = new int[width, length];
-                GetTwoDimensionalArray(array);
+                getFormUserArray();
             }
             else
             {
-                Random random = new Random();
-                int ArrayLength = random.Next(3, 10);
-                int ArrayWidth = random.Next(3, 10);
-                array = new int[ArrayWidth, ArrayLength];
-                GetTwoDimensionalArrayRandom(array);
+                getRandomArray();
             }
         }
 
-        private int[,] GetTwoDimensionalArray(int[,] array)
+        protected override void getFormUserArray()
         {
+            Console.WriteLine("Ширина двумерного массива: ");
+            int length = int.Parse(Console.ReadLine());
+            Console.WriteLine("Длина двумерного массива: ");
+            int width = int.Parse(Console.ReadLine());
+            array = new int[width, length];
             for (int i = 0; i < array.GetLength(0); i++)
             {
                 for (int j = 0; j < array.GetLength(1); j++)
                 {
+                    Console.WriteLine($"Введите элемент с координатой ({j + 1}; {i + 1}): ");
                     array[i, j] = int.Parse(Console.ReadLine());
                 }
             }
-            return array;
         }
 
-        private int[,] GetTwoDimensionalArrayRandom(int[,] array)
+        protected override void getRandomArray()
         {
             Random random = new Random();
+            int length = random.Next(3, 10);
+            int width = random.Next(3, 10);
+            array = new int[width, length];
             for (int i = 0; i < array.GetLength(0); i++)
             {
                 for (int j = 0; j < array.GetLength(1); j++)
@@ -45,23 +48,17 @@ namespace project32
                     array[i, j] = random.Next(0, 10);
                 }
             }
-            return array;
         }
 
-        public override void fillArray(bool isNotRandom, int length, int width)
+        public override void fillArray(bool isNotRandom)
         {
             if (isNotRandom)
             {
-                array = new int[width, length];
-                GetTwoDimensionalArray(array);
+                getFormUserArray();
             }
             else
             {
-                Random random = new Random();
-                int ArrayLength = random.Next(3, 10);
-                int ArrayWidth = random.Next(3, 10);
-                array = new int[ArrayWidth, ArrayLength];
-                GetTwoDimensionalArrayRandom(array);
+                getRandomArray();
             }
         }
         

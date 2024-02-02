@@ -6,6 +6,11 @@ namespace project32
     {
         public abstract void printArray();
         public abstract double getAverageArrayValue();
-        public abstract void fillArray(bool isNotRandom, int length, int width);
+        public abstract void fillArray(bool isNotRandom);
+
+        public baseArray(bool isNotRandom){}
+
+        protected abstract void getRandomArray();
+        protected abstract void getFormUserArray();
     }
 }

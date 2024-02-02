@@ -9,49 +9,49 @@ namespace project32
         private bool isNotRandom = false;
         private int[] array;
 
-        public oneDimensionalArray(bool isNotRandom, int length, int width)
+        public oneDimensionalArray(bool isNotRandom) : base(isNotRandom)
         {
-            array = new int[length];
             if (isNotRandom)
             {
-                getArray(array);
+                getFormUserArray();
             }
             else
             {
-                getRandomArray(array);
+                getRandomArray();
             }
         }
 
-        private int[] getRandomArray(int[] array)
+        protected override void getRandomArray()
         {
             Random random = new Random();
+            array = new int[random.Next(1, 10)];
             for (int i = 0; i < array.Length; i++)
             {
                 int value = random.Next(-250, 250);
                 array[i] = value;
             }
-            return array;
         }
 
-        private int[] getArray(int[] array)
+        protected override void getFormUserArray()
         {
+            Console.Write("Длина одномерного массива: ");
+            array = new int[int.Parse(Console.ReadLine())];
             for (int i = 0; i < array.Length; i++)
             {
+                Console.Write($"Введите {i + 1} элемент массива: ");
                 array[i] = int.Parse(Console.ReadLine());
             }
-            return array;
         }
 
-        public override void fillArray(bool isNotRandom, int length, int width)
+        public override void fillArray(bool isNotRandom)
         {
-            array = new int[length];
             if (isNotRandom)
             {
-                getArray(array);
+                getFormUserArray();
             }
             else
             {
-                getRandomArray(array);
+                getRandomArray();
             }
         }
 
