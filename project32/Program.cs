@@ -9,19 +9,21 @@ namespace project32
             baseArray[] arrays = new baseArray[3];
 
             Console.WriteLine("Ввести массивы не случайно? (Yes, No): ");
-            if(Console.ReadLine() == "Yes")
+            string answer = Console.ReadLine();
+            bool userAnswer;
+            if(answer == "Yes")
             {
-                arrays[0] = new oneDimensionalArray(true);
-                arrays[1] = new twoDimensionalArray(true);
-                arrays[2] = new jagged(true);
+                userAnswer = true;
             }
             
             else
             {
-                arrays[0] = new oneDimensionalArray(false);
-                arrays[1] = new twoDimensionalArray(false);
-                arrays[2] = new jagged(false);
+                userAnswer = false;
             }
+            
+            arrays[0] = new oneDimensionalArray(userAnswer);
+            arrays[1] = new twoDimensionalArray(userAnswer);
+            arrays[2] = new jagged(userAnswer);            
 
             for(int i = 0; i < arrays.Length; i++)
             {
